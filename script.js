@@ -6,11 +6,22 @@ const bttnHandler = document.querySelector("#bttn");
 const output = document.querySelector("#out");
 
 function finalResults() {
-  const bp = Number(buyPrice.value);
-  const cp = Number(currentPrice.value);
-  const qt = Number(Quantity.value);
-  profitLossCalculator(bp, cp, qt);
+  
+  var bp = buyPrice.value;
+  var cp =currentPrice.value;
+  var qt =Quantity.value;
+  if(bp==="" || cp===""|| qt===""){
+    output.innerHTML="must give some numbers!!!"
+  } else if(bp<=0||cp<=0||qt<=0){
+    output.innerHTML="Be positive give number positive!!!"
+  }else{
+  bp = Number(buyPrice.value);
+  cp = Number(currentPrice.value);
+  qt = Number(Quantity.value);
+    profitLossCalculator(bp, cp, qt);
+  }
 }
+
 function profitLossCalculator(buyprice, currentprice, quantity) {
   if (currentprice > buyprice) {
     const profit = (currentprice - buyprice) * quantity;
